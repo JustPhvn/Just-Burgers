@@ -1,0 +1,30 @@
+<div class="columns">
+    <div class="column is-half" style="text-align: center;"> 
+        <h1>Available Burgers</h1>            
+            <div>
+        {{#each burgers}}
+        {{#unless devoured}}
+        <div>
+        <button type="button" class="nes-btn is-primary uneaten" name={{burger_name}}>{{burger_name}}</button>
+        </div>  
+        {{/unless}} 
+        {{/each}}
+            </div>
+    </div>
+    <div class="column is-half" style="text-align: center;">
+        <h1>Eaten Burgers</h1>      
+            <div>
+        {{#each burgers}}
+        {{#if devoured}}
+        <div>
+        <button type="button" class="nes-btn is-error" name={{id}}>{{burger_name}}</button>
+        </div>   
+        {{/if}}
+        {{/each}}
+            </div>
+    </div>
+</div>    
+<div class="nes-field">  
+  <input type="text" id="newBurger" class="nes-input" placeholder="***NEW BURGER***">
+  <button type="button" class="nes-btn is-success">Add Burger</button>
+</div>
