@@ -17,14 +17,19 @@
         {{#each burgers}}
         {{#if devoured}}
         <div>
-        <button type="button" class="nes-btn is-error eaten" data-name="{{burger_name}}">{{burger_name}}</button>
+        <button type="button" class="nes-btn is-error eaten" data-name="{{burger_name}}" id="{{id}}">{{burger_name}}</button>
         </div>   
         {{/if}}
         {{/each}}
             </div>
     </div>
 </div>    
+<form>
 <div class="nes-field">  
-  <input type="text" id="newBurger" class="nes-input" placeholder="***NEW BURGER***">
+  <input type="text" id="newBurger" name="newBurger" class="nes-input" placeholder="***NEW BURGER***">
   <button type="button" class="nes-btn is-success addBurger">Add Burger</button>
 </div>
+</form>
+
+
+

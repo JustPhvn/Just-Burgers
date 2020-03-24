@@ -35,11 +35,13 @@ const orm = {
       }
     );
   },
-  delete(table, name, cb) {
+  delete(name, cb) {
     var queryString =
-      "DELETE FROM " + table + " WHERE devoured = true AND name" + name;
+      "DELETE FROM burgers WHERE devoured = true AND burger_name = '" +
+      name +
+      "'";
 
-    connection.query(queryString, function(err, result) {
+    connect.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
