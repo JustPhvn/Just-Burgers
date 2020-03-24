@@ -3,6 +3,7 @@ const connect = require("../config/connection.js");
 const orm = {
   selectAll: function(table, cb) {
     const queryString = "SELECT * FROM " + table;
+    console.log(queryString);
     connect.query(queryString, function(err, result) {
       // console.log(queryString);
       if (err) throw err;
@@ -10,9 +11,16 @@ const orm = {
     });
   },
   insertOne(table, columnName, name, cb) {
-    const queryString = "INSERT INTO ?? (??) VALUES (?)";
-    connect.query(queryString, [table, column, name], function(err, result) {
-      if (err) throw err;
+    const queryString =
+      "INSERT INTO " + table + " (" + columnName + ") VALUES ('" + name + "')";
+    console.log(queryString);
+    connect.query(queryString, ["burgers", "burger_name", name], function(
+      err,
+      result
+    ) {
+      if (err) {
+        throw err;
+      }
       cb(result);
     });
   },
@@ -23,9 +31,21 @@ const orm = {
       [table, columnName, value, secondColumn, name],
       function(err, result) {
         if (err) throw err;
-        result.sendStatus(200).end();
+        cb(result);
       }
     );
+  },
+  delete(table, name, cb) {
+    var queryString =
+      "DELETE FROM " + table + " WHERE devoured = true AND name" + name;
+
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
   }
 };
 

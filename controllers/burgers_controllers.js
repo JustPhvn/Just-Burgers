@@ -15,7 +15,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-  burger.insertOne(["name"], [req.body.name], function(result) {
+  burger.insertOne([req.body.name], function(result) {
     res.json(result);
   });
 });
@@ -26,7 +26,12 @@ router.put("/api/burgers/:name", function(req, res) {
     if (result.changedRows === 0) {
       return res.status(404).end();
     }
-    res.sendStatus(200).end();
+    res.json(result);
+  });
+
+  router.delete("/api/burgers/:name", function(req, res) {
+    const name = req.params.name;
+    burger.delete();
   });
 });
 
